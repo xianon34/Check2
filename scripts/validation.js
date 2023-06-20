@@ -51,7 +51,7 @@ const removeError = (elementId) => {
 // Validação do campo "Nome"
 const validateNome = (nome) => {
   if (nome === '') {
-    displayError('nomeError', 'Por favor, insira um nome');
+    displayError('nomeError', 'O campo de nome é obrigatório');
     formErrors.nome = true;
   } else if (nome.length < 6 || nome.length > 12) {
     displayError('nomeError', 'O nome deve ter entre 6 e 12 caracteres');
@@ -65,7 +65,7 @@ const validateNome = (nome) => {
 // Validação do campo "Sobrenome"
 const validateSobrenome = (sobrenome) => {
   if (sobrenome === '') {
-    displayError('sobrenomeError', 'Por favor, insira um sobrenome');
+    displayError('sobrenomeError', 'O campo de sobrenome é obrigatório');
     formErrors.sobrenome = true;
   } else if (sobrenome.length < 6 || sobrenome.length > 12) {
     displayError('sobrenomeError', 'O sobrenome deve ter entre 6 e 12 caracteres');
@@ -90,8 +90,8 @@ const validateEmail = (email) => {
 
 // Validação do campo "Senha"
 const validateSenha = (senha) => {
-  if (senha === '' || senha.length < 4) {
-    displayError('senhaError', 'A senha deve ter pelo menos 4 caracteres');
+  if (senha === '' || senha.length < 8) {
+    displayError('senhaError', 'A senha deve ter pelo menos 8 caracteres');
     formErrors.senha = true;
   } else {
     removeError('senhaError');
@@ -109,6 +109,18 @@ const validateRepetirSenha = (repetirSenha) => {
     removeError('repetirSenhaError');
     formErrors.repetirSenha = false;
   }
+};
+
+// Função para exibir uma mensagem de sucesso
+const displaySuccessMessage = () => {
+  const successMessage = document.getElementById('successMessage');
+  successMessage.innerText = 'Usuário cadastrado com sucesso , redirecionan para login';
+  successMessage.style.color = 'green';
+};
+
+// Função para redirecionar para a página de login após 4 segundos
+const redirectToLogin = () => {
+  window.location.href = './index.html';
 };
 
 // Manipulador de eventos para alterações nos campos do formulário
@@ -176,12 +188,11 @@ const handleSubmit = (event) => {
     fetch(`${apiBaseUrl}/users`, requestSettings)
       .then(response => {
         if (response.ok) {
-          console.log('Usuário cadastrado com sucesso');
+          displaySuccessMessage(); // Exibe a mensagem de sucesso
+          setTimeout(redirectToLogin, 4000); // Redireciona para a página de login após 4 segundos
         } else if (response.status === 400) {
           // Exibe mensagens de erro retornadas pela API
           response.json().then(data => {
-            displayError('nomeError', data.message || 'O nome já existe, use outro');
-            displayError('sobrenomeError', data.message || 'O sobrenome já existe, use outro');
             displayError('emailError', data.message || 'O email já foi cadastrado, use outro');
           });
         } else {
