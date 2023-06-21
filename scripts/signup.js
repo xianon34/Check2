@@ -13,7 +13,7 @@ const login = () => {
   // Lógica para enviar a requisição à API usando o método fetch
   fetch(`${apiBaseUrl}/users/login`, {
     method: 'POST',
-    body: JSON.stringify({ email, senha }),
+    body: JSON.stringify({ email, password: senha }),
     headers: {
       'Content-Type': 'application/json'
     }
