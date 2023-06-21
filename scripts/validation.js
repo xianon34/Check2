@@ -53,8 +53,8 @@ const validateNome = (nome) => {
   if (nome === '') {
     displayError('nomeError', 'O campo de nome é obrigatório');
     formErrors.nome = true;
-  } else if (nome.length < 6 || nome.length > 12) {
-    displayError('nomeError', 'O nome deve ter entre 6 e 12 caracteres');
+  } else if (nome.length < 4 || nome.length > 12) {
+    displayError('nomeError', 'O nome deve ter entre 4 e 12 caracteres');
     formErrors.nome = true;
   } else {
     removeError('nomeError');
@@ -67,8 +67,8 @@ const validateSobrenome = (sobrenome) => {
   if (sobrenome === '') {
     displayError('sobrenomeError', 'O campo de sobrenome é obrigatório');
     formErrors.sobrenome = true;
-  } else if (sobrenome.length < 6 || sobrenome.length > 12) {
-    displayError('sobrenomeError', 'O sobrenome deve ter entre 6 e 12 caracteres');
+  } else if (sobrenome.length < 4 || sobrenome.length > 12) {
+    displayError('sobrenomeError', 'O sobrenome deve ter entre 4 e 12 caracteres');
     formErrors.sobrenome = true;
   } else {
     removeError('sobrenomeError');
