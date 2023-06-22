@@ -1,9 +1,6 @@
-/* Retira espaços iniciais e finais de uma string informada */
-function normalizaStringUsandoTrim(textoRecebido) {
+/* Retira espaços iniciais e finais de uma string informada */ 
+export function normalizaStringUsandoTrim(textoRecebido) {
   return textoRecebido.trim();
 }
 
-/* BASE-URL da API que o projeto realiza a conexão */
-function baseUrlApi() {
-  return "https://todo-api.ctd.academy/v1"
-}
+export const baseUrlApi = "https://todo-api.ctd.academy/v1"
