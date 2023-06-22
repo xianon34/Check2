@@ -7,81 +7,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do App</title>
 
-  <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
-  <link rel="stylesheet" href="styles/acesso.css">
-
-  <!-- ---------------------- lógica aplicada no registro -------------------- -->
-  <script src="./scripts/validacoes/utils.js" defer></script>
-  <script src="./scripts/login/signup.js" type="module" defer></script>
-
+  <link rel="stylesheet" href="./styles/acesso.css">
 </head>
 
 <body>
-
   <div class="left">
     <img src="./assets/pessoa-signup.png" alt="">
   </div>
   <div class="right">
-    
-    <form id="formToDo">
-      
+    <form>
       <div class="form-header">
         <p>To-Do App</p>
       </div>
 
       <label>
         Nome:
-        <input 
-        type="text" 
-        required 
-        minlength="4" 
-        maxlength="40"
-        >
+        <input type="text" id="inputNome">
+        <div id="nomeError" class="error-message"></div>
       </label>
       <label>
         Sobrenome:
-        <input 
-        type="text" 
-        required  
-        minlength="4" 
-        maxlength="60"
-        >
+        <input type="text" id="inputSobrenome">
+        <div id="sobrenomeError" class="error-message"></div>
       </label>
       <label>
         Email:
-        <input 
-        type="email" 
-        required 
-        minlength="6" 
-        id="emailInput"
-        >
+        <input type="email" id="inputEmail">
+        <div id="emailError" class="error-message"></div>
       </label>
       <label>
         Senha:
-        <input 
-        type="password"
-        required 
-        minlength="8" 
-        id="passwordInput"
-        >
+        <input type="password" id="inputSenha">
+        <div id="senhaError" class="error-message"></div>
       </label>
       <label>
         Repetir senha:
-        <input 
-        type="password" 
-        required 
-        minlength="8" 
-        id="confirmInput"
-        >
+        <input type="password" id="inputRepetirSenha">
+        <div id="repetirSenhaError" class="error-message"></div>
       </label>
 
-      <button type="submit" id="btnSubmit">Criar conta</button>
+      <button type="submit" id="submitButton">Criar conta</button>
 
     </form>
     <div class="ingressar">
-      <a href="./index.html">Já possui conta? Acesse aqui</a>
+      <a href="index.html">Já possui conta? Acesse aqui</a>
     </div>
   </div>
+
+  <script src="./scripts/validation.js"></script>
+
 
 </body>
 
